@@ -1,16 +1,34 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## TODOs
 
-Currently, two official plugins are available:
+1. You should have three pages: a home page, a shop page, and a cart page. 
+Let the user navigate between the pages with a navigation bar, which will be shown on all pages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. To your homepage, you can add whatever you’d like! A few images or information will be totally fine;
+it doesn’t have to be something fancy - it’s to test the concepts taught thus far.
 
-## React Compiler
+3. On the shop page, build individual card elements for each of your products. 
+Display an input field on it, which lets a user manually type in how many items they want to buy.
+Also, add an increment and decrement button next to it for fine-tuning. 
+You can also display a title for each product as well as an “Add To Cart” button.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+4. When there are items in your cart, the cart page link in the navbar should indicate how many items are in your cart.
+This should update in real time as the user adds or removes items from their cart.
 
-## Expanding the ESLint configuration
+5. On the cart page, you should display the items and their quantities,
+and allow users to increase/decrease the quantity of items in their cart (including removal if appropriate).
+There’s no need to implement any checkout/payment system.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+6. Fetch your shop items from FakeStore API or something similar.
+
+7. Clear out any missing in props validation errors in your app!
+
+8. Make sure to test your app thoroughly using the React Testing Library.
+Be careful not to test react-router-dom directly, 
+since it is an external library and the developers working on it must have tested the library already.
+
+9. As usual, style your application so you can show it off! You have a host of options provided already.
+
+10. Lastly, it’s time to deploy it! Depending on what hosting solution you’re using,
+you may need some additional configuration so that your routing is handled correctly as a single page application (SPA).
