@@ -1,21 +1,34 @@
 import { useState } from "react";
 
-function ShopCard ({data, cartCount, setCartCount}) {
+function ShopCard ({id,elem, data, setData}) {
   const [count, setCount] = useState(0);
   const {
     image,
     title,
     price,
     rating,
-  } = data;
+  } = elem;
 
   const handleMinusClick = () => {
     count > 0 && setCount(count - 1);
-    setCartCount(cartCount - 1);
+    const newData = [...data];
+    newData[id] = {...elem, toCart: elem.toCart > 0 ? elem.toCart - 1 : 0};
+    setData(newData);
   }
   const handlePlusClick = () => {
     setCount (count + 1);
-    setCartCount(cartCount + 1);
+    const newData = [...data];
+    newData[id] = {...elem, toCart: elem.toCart + 1};
+    setData(newData);
+  }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    if(value >= 0) {
+      setCount(e.target.value);
+      const newData = [...data];
+      newData[id] = {...elem, toCart: value ? parseInt(value) : 0}
+      setData(newData);
+    }
   }
   return (
     <div className="card shop-card">
@@ -32,7 +45,7 @@ function ShopCard ({data, cartCount, setCartCount}) {
           value={count}
           onChange={(e) => {
             e.preventDefault();
-            setCount(e.target.value);
+            handleInputChange(e);
           }}
         />
         <button
