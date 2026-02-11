@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
+import { useLocation } from "react-router-dom";
 import NavBar from "./components/Nav";
+import './App.css'
 function App () {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
-  
+
   const addToCart = (id, elem, count) => {
     const [oldElem] = cart.filter(e => e.id === id);
     let newCart = [...cart];
@@ -24,12 +26,14 @@ function App () {
     setCart(newCart);
   }
 
+  const mainClass = useLocation().pathname;
+
   return (
     <>
-      <div id="main">
-        <NavBar cart={cart} />
+      <NavBar cart={cart} />
+      <main id="main" className={mainClass}>
         <Outlet context={{addToCart,cart, handleDel, data, setData}} />
-      </div>
+      </main>
     </>
   )
 }
