@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ShopCard ({id,elem, data, setData}) {
+function ShopCard ({id,elem, addToCart}) {
   const [count, setCount] = useState(0);
   const {
     image,
@@ -8,26 +8,16 @@ function ShopCard ({id,elem, data, setData}) {
     price,
     rating,
   } = elem;
-
   const handleMinusClick = () => {
     count > 0 && setCount(count - 1);
-    const newData = [...data];
-    newData[id] = {...elem, toCart: elem.toCart > 0 ? elem.toCart - 1 : 0};
-    setData(newData);
   }
   const handlePlusClick = () => {
     setCount (count + 1);
-    const newData = [...data];
-    newData[id] = {...elem, toCart: elem.toCart + 1};
-    setData(newData);
   }
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    if(value >= 0) {
-      setCount(e.target.value);
-      const newData = [...data];
-      newData[id] = {...elem, toCart: value ? parseInt(value) : 0}
-      setData(newData);
+    if (!Number.isNaN(e.target.value)) {
+      const value = parseInt(e.target.value);
+      value >= 0 && setCount(value);
     }
   }
   return (
@@ -54,6 +44,10 @@ function ShopCard ({id,elem, data, setData}) {
         >+</button>
       </div>
       <p>{`${rating.rate} from ${rating.count} people`}</p>
+      <button
+        type="button"
+        onClick={() => addToCart(id, elem, count)}
+      >Add To Cart</button>
     </div>
   )
 }

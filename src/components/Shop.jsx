@@ -3,15 +3,17 @@ import { useEffect } from "react";
 import { useOutletContext } from "react-router";
 import ShopCard from "./ShopCard";
 function Shop () {
-  const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false)
-  const {cartCount, setCartCount} = useOutletContext();
+  const {data, setData, addToCart} = useOutletContext();
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch('https://fakestoreapi.com/products/');
         if (response.ok) {
           const raw = await response.json();
+          for (const elem of raw) {
+            elem.toCart = 0;
+          }
           setData(raw);
         } else {
           throw new Error ("Faild to Fetch data");
@@ -27,7 +29,14 @@ function Shop () {
   return (
     <>
     {loaded && data.map((elem, index) => (
-      <ShopCard data={elem} id={index} key={elem.image} cartCount={cartCount} setCartCount={setCartCount}></ShopCard>
+      <ShopCard 
+        elem={elem} 
+        data={data}
+        setData={setData}
+        id={index} 
+        key={elem.image} 
+        addToCart={addToCart}
+      ></ShopCard>
     ))}
     </>
   )
