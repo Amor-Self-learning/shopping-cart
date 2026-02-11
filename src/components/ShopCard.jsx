@@ -23,16 +23,18 @@ function ShopCard ({id,elem, addToCart}) {
   return (
     <div className="card shop-card">
       <img src={image} alt={title} loading="lazy"/>
-      <h3 className="title">{title}</h3>
+      <h4 className="title">{title}</h4>
       <p className="price">{`$${price}`}</p>
       <div className="add-to-cart">
         <button 
           type="button"
           onClick={handleMinusClick}
+          className="btn"
         >-</button>
         <input
           type="number"
           value={count}
+          className="btn"
           onChange={(e) => {
             e.preventDefault();
             handleInputChange(e);
@@ -41,12 +43,14 @@ function ShopCard ({id,elem, addToCart}) {
         <button
           type="button"
           onClick={handlePlusClick}
+          className="btn"
         >+</button>
       </div>
-      <p>{`${rating.rate} from ${rating.count} people`}</p>
+      <p>{`${rating.rate} ⭐ from ${rating.count} people`}</p>
       <button
         type="button"
         onClick={() => addToCart(id, elem, count)}
+        className="btn"
       >Add To Cart</button>
     </div>
   )

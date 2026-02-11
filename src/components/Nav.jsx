@@ -8,9 +8,9 @@ function NavBar ({cart}) {
   return (
     <nav>
       <div className="tabs" style={{gap: '1rem', display: 'flex'}}>
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop Now</Link>
-        <Link to="/cart">Cart<span className="cart-count">{items}</span></Link>
+        <Link to="/" className="btn">Home</Link>
+        <Link to="/shop" className="btn">Shop Now</Link>
+        <Link to="/cart" className="btn">Cart<span className="cart-count">{items}</span></Link>
       </div>
     </nav>
   )
