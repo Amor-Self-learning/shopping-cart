@@ -23,17 +23,8 @@ function CartCard ({elem, handleDel, id, addToCart}) {
       <h3 className="title">{title}</h3>
       <p className="description">{description}</p>
       <p className="price">{`$${price}`}</p>
+      <p>Items: {count}</p>
       <p>Total: {`$${price * count}`}</p>
-      <div className="add-remove">
-        <button 
-          type="button"
-          onClick={handleMinusClick}
-        >-</button>
-        <button
-          type="button"
-          onClick={handlePlusClick}
-        >+</button>
-      </div>
       <button
         className="del-btn"
         onClick={ () => handleDel(id)}

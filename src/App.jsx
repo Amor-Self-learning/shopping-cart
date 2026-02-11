@@ -4,22 +4,19 @@ import NavBar from "./components/Nav";
 function App () {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
-  const calculateCartCount = () => {
-    return data.reduce((total, elem) => {
-      return total + elem.toCart
-    }, 0)
-  }
-
+  
   const addToCart = (id, elem, count) => {
-    const [newElem] = cart.filter(e => e.id === id);
-    if (newElem) {
-      newElem.toCart += count;
+    const [oldElem] = cart.filter(e => e.id === id);
+    let newCart = [...cart];
+    if (oldElem) {
+      oldElem.toCart += count;
+      newCart[id] = oldElem;
     } else {
       elem.id = id;
       elem.toCart = count;
-      const newCart = [...cart, elem]
-      setCart(newCart);
+      newCart = [...cart, elem]
     }
+    setCart(newCart)
   }
 
   const handleDel = (id) => {
@@ -30,7 +27,7 @@ function App () {
   return (
     <>
       <div id="main">
-        <NavBar count={calculateCartCount()} />
+        <NavBar cart={cart} />
         <Outlet context={{addToCart,cart, handleDel, data, setData}} />
       </div>
     </>

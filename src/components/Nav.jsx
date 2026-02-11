@@ -1,0 +1,18 @@
+import { Link } from "react-router";
+
+function NavBar ({cart}) {
+  const items = cart ? cart.reduce((acc, curr) => (
+    acc + curr.toCart
+  ), 0)
+  : 0 ;
+  return (
+    <nav>
+      <div className="tabs" style={{gap: '1rem', display: 'flex'}}>
+        <Link to="/">Home</Link>
+        <Link to="/shop">Shop Now</Link>
+        <Link to="/cart">Cart<span className="cart-count">{items}</span></Link>
+      </div>
+    </nav>
+  )
+}
+export default NavBar;
