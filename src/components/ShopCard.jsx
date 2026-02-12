@@ -3,7 +3,7 @@ import { useState } from "react";
 function ShopCard ({id,elem, addToCart}) {
   const [count, setCount] = useState(0);
   const {
-    image,
+    images,
     title,
     price,
     rating,
@@ -22,7 +22,8 @@ function ShopCard ({id,elem, addToCart}) {
   }
   return (
     <div className="card shop-card">
-      <img src={image} alt={title} loading="lazy"/>
+      <img src={images[0]} alt={title} loading="lazy"/>
+      <div className="flex-column">
       <h4 className="title">{title}</h4>
       <p className="price">{`$${price}`}</p>
       <div className="add-to-cart">
@@ -46,12 +47,13 @@ function ShopCard ({id,elem, addToCart}) {
           className="btn"
         >+</button>
       </div>
-      <p>{`${rating.rate} ⭐ from ${rating.count} people`}</p>
+      <p>{`${rating} ⭐`}</p>
       <button
         type="button"
         onClick={() => addToCart(id, elem, count)}
         className="btn"
       >Add To Cart</button>
+    </div>
     </div>
   )
 }

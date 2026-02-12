@@ -1,6 +1,6 @@
 function CartCard ({elem, handleDel, id}) {
   const {
-    image,
+    images,
     title,
     price,
     description,
@@ -8,7 +8,7 @@ function CartCard ({elem, handleDel, id}) {
 
   return (
     <div className="card cart-card">
-      <img src={image} alt={title} loading="lazy" />
+      <img src={images[0]} alt={title} loading="lazy" />
       <h4 className="title">{title}</h4>
       <p className="description">{description}</p>
       <p className="price">{`$${price}`}</p>

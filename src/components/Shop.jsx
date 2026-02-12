@@ -8,13 +8,13 @@ function Shop () {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://fakestoreapi.com/products/');
+        const response = await fetch('https://dummyjson.com/products?limit=0');
         if (response.ok) {
           const raw = await response.json();
-          for (const elem of raw) {
+          for (const elem of raw.products) {
             elem.toCart = 0;
           }
-          setData(raw);
+          setData(raw.products);
         } else {
           throw new Error ("Faild to Fetch data");
         }
@@ -34,7 +34,7 @@ function Shop () {
         data={data}
         setData={setData}
         id={index} 
-        key={elem.image} 
+        key={elem.images[0]} 
         addToCart={addToCart}
       ></ShopCard>
     ))}
