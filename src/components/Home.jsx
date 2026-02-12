@@ -3,7 +3,7 @@ function Home () {
   return (
     <>
       <div className="left-home">
-      <h2>A Delightful Shopping Experience</h2>
+      <h1>A Delightful Shopping Experience</h1>
       <p className="hero">
         This is a small demo shopping app where you can browse products, add them to a cart, and adjust quantities in real time.
 It’s designed to be fast, simple, and easy to understand.
