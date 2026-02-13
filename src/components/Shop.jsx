@@ -28,12 +28,12 @@ function Shop () {
 
   return (
     <>
-    {loaded && data.map((elem, index) => (
+    {loaded && data.map(elem => (
       <ShopCard 
         elem={elem} 
         data={data}
         setData={setData}
-        id={index} 
+        id={elem.images[0]} 
         key={elem.images[0]} 
         addToCart={addToCart}
       ></ShopCard>
