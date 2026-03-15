@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { useLocation } from "react-router-dom";
-import NavBar from "./components/Nav";
+import NavBar from "./components/Nav.jsx";
 import './App.css'
 function App () {
   const [data, setData] = useState([]);
